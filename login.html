@@ -15,14 +15,22 @@
     }
   </style>
 </head>
-
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+   <form class="formulario" action="" id="formulario">
+    <img class="imagen" src="../workspace-inicial/img/login.png" alt="" width="110" height="90">
+    <h1 class="h3 mb-3 fw-normal">Inicio de Sesión</h1>
+    <h6>Email</h6>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="usuario" placeholder="name@example.com" width="50">
+      <label for="floatingInput"></label>
+      <h6>Contraseña</h6>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="contraseña" placeholder="Password">
+        <label for="floatingPassword"></label>
       </div>
-    </div>
+      <button class="botoncito" type="submit" id="boton">Ingresar</button>
+  </form>
   </main>
   <footer class="text-muted">
     <div class="container">
