@@ -1,12 +1,13 @@
+
 const datos = "https://japceibal.github.io/emercado-api/cats_products/101.json"
 let ListadoDeAutos = [];
 
 
 function  showCategoriesList(autos){
-    let htmlContentToAppend = "";
+    let mostrarAutos = "";
 
     for(let auto of autos.products){ 
-        htmlContentToAppend += `
+        mostrarAutos += `
         <div class="list-group-item list-group-item-action">
              <div class="row">
                  <div class="col-3">
@@ -25,7 +26,7 @@ function  showCategoriesList(autos){
              </div>
          </div>
          `
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+        document.getElementById("cat-list-container").innerHTML = mostrarAutos; 
     }
 }
 
