@@ -1,5 +1,5 @@
 
-const datos = "https://japceibal.github.io/emercado-api/cats_products/101.json"
+const datos = `https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`
 let ListadoDeAutos = [];
 
 
