@@ -3,6 +3,7 @@ const usuario = document.getElementById("usuario")
 const contraseña = document.getElementById("contraseña")
 const form = document.getElementById("formulario")
 
+
 //localStorage.setItem("usuario", usuario);
 
 form.addEventListener("submit", e=>{
@@ -11,16 +12,6 @@ form.addEventListener("submit", e=>{
         alert("Debe completar los campos")
         return false;
     } else { localStorage.setItem("usuario", usuario.value);
-     window.location.href = "file:///C:/Users/59895/Desktop/Jap/Entrega1/46679728_Entrega1/workspace-inicial/inicio.html";
+     window.location.href = "inicio.html";
 }}
 )
-
-
-
-//function validateForm() {
-//     let x = document.forms["myForm"]["fname"].value;
-//     if (x == "") {
-//       alert("Name must be filled out");
-//       return false;
-//     }
-//   }
