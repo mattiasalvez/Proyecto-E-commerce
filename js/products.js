@@ -121,70 +121,69 @@ function setCatID(id) {
 // }
 
 
-// function sortAndShowProducts(sortCriteria, productsArray){
-//     currentSortCriteria = sortCriteria;
+function sortAndShowProducts(sortCriteria, productsArray){
+    currentSortCriteria = sortCriteria;
 
-//     if(productsArray != undefined){
-//         currentProductsArray = productsArray;
-//     }
+    if(productsArray != undefined){
+        currentProductsArray = productsArray;
+    }
 
-//     currentProductsArray = sortCategories(currentSortCriteria, currentProductsArray);
+    currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
 
-//     Muestro las categorías ordenadas
-//     showProductsList();
-// }
+//    Muestro las categorías ordenadas
+    showProductsList();
+}
 
 // document.addEventListener("DOMContentLoaded", function(e){
 //     getJSONData(CATEGORIES_URL).then(function(resultObj){
 //         if (resultObj.status === "ok"){
 //             currentProductsArray = resultObj.data
-//             showCategoriesList()
-//             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+//             showProductsList()
+//             sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
 //         }
 //     });
 
-//     document.getElementById("sortAsc").addEventListener("click", function(){
-//         sortAndShowCategories(ORDER_ASC_BY_NAME);
-//     });
+    document.getElementById("sortAsc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_ASC_BY_COST);
+    });
 
-//     document.getElementById("sortDesc").addEventListener("click", function(){
-//         sortAndShowCategories(ORDER_DESC_BY_NAME);
-//     });
+    document.getElementById("sortDesc").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_DESC_BY_COST);
+    });
 
-//     document.getElementById("sortByCount").addEventListener("click", function(){
-//         sortAndShowCategories(ORDER_BY_PROD_COUNT);
-//     });
+    document.getElementById("sortByCount").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT);
+    });
 
-//     document.getElementById("clearRangeFilter").addEventListener("click", function(){
-//         document.getElementById("rangeFilterCountMin").value = "";
-//         document.getElementById("rangeFilterCountMax").value = "";
+    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+        document.getElementById("rangeFilterCountMin").value = "";
+        document.getElementById("rangeFilterCountMax").value = "";
 
-//         minCount = undefined;
-//         maxCount = undefined;
+        minCount = undefined;
+        maxCount = undefined;
 
-//         showCategoriesList();
-//     });
+        showProductsList();
+    });
 
-//     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-//         Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-//         de productos por categoría.
-//         minCount = document.getElementById("rangeFilterCountMin").value;
-//         maxCount = document.getElementById("rangeFilterCountMax").value;
+    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+       // Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+       // de productos por categoría.
+        minCount = document.getElementById("rangeFilterCountMin").value;
+        maxCount = document.getElementById("rangeFilterCountMax").value;
 
-//         if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
-//             minCount = parseInt(minCount);
-//         }
-//         else{
-//             minCount = undefined;
-//         }
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+            minCount = parseInt(minCount);
+        }
+        else{
+            minCount = undefined;
+        }
 
-//         if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
-//             maxCount = parseInt(maxCount);
-//         }
-//         else{
-//             maxCount = undefined;
-//         }
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+            maxCount = parseInt(maxCount);
+        }
+        else{
+            maxCount = undefined;
+        }
 
-//         showCategoriesList();
-//     });
-// });
+        showProductsList();
+    });
