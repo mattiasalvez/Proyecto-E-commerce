@@ -1,8 +1,6 @@
 const ORDER_ASC_BY_COST = "AZ";
 const ORDER_DESC_BY_COST = "ZA";
 const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
-let currentProductsArray = [];
-let productsArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
@@ -36,6 +34,22 @@ function sortProducts(criteria, array){
     return result;
 }
 
+
+let currentProductsArray = [];
+let productsArray = [];
+let datos = `https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`;
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(datos).then(function(resultObj){
+        if (resultObj.status === "ok"){
+            currentProductsArray = resultObj.data.products
+            productsArray =currentProductsArray
+            showProductsList()
+        }
+    });
+});
+
+
 // function setCatID(id) {
 //     localStorage.setItem("catID", id);
 //     window.location = "products.html"
@@ -43,14 +57,14 @@ function sortProducts(criteria, array){
 
 function showProductsList(){
 
-    let htmlContentToAppend = "";
+    let informacion = "";
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
-            htmlContentToAppend += `
+            informacion += `
             <div class= "list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
@@ -59,18 +73,17 @@ function showProductsList(){
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">
-                            <h4>` + product.name + `</h4>
-                            <p>` + product.description + `</p>
+                            <h4>` + product.name + ` - ` + product.cost + ` ` + product.currency + `</h4>
                             <p>` + product.soldCount + ` Vendidos </p>
                         </div>
-                        <small class="text-muted">Precio ` + product.cost + ` ` + product.currency + `</small>
+                        <small class="text-muted"> ` + product.description + `</small>
                     </div>
                 </div>
             </div>
             `
         }
 
-        document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("product-list-container").innerHTML = informacion;
     }
 }
 
@@ -84,17 +97,6 @@ function sortAndShowProducts(sortCriteria, productsArray){
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
     showProductsList();
 }
-
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(`https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`)
-    .then(function(resultObj){
-        if (resultObj.status === "ok"){
-            currentProductsArray = resultObj.data.products
-            productsArray =currentProductsArray
-            showProductsList()
-        }
-    });
-});
 
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_ASC_BY_COST);
@@ -119,8 +121,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 

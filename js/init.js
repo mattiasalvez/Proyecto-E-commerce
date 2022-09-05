@@ -46,4 +46,4 @@ function obtenerInfo(){
 }
 
 
-document.getElementById("usuarioIngresado").innerHTML = `<a class="nav-link" href="my-profile.html">${obtenerInfo()}</a>`;
+document.getElementById("usuarioIngresado").innerHTML = `<a class="nav-link" href="index.html">${obtenerInfo()}</a>`;
