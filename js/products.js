@@ -44,18 +44,19 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentProductsArray = resultObj.data.products
             productsArray =currentProductsArray
-            showProductsList()
+            showProductsInfoList()
         }
     });
 });
+console.log(productsArray)
 
+function setCatID(id) {
+    localStorage.setItem("catID", id);
+    console.log(id);
+    window.location = "product-info.html"
+}
 
-// function setCatID(id) {
-//     localStorage.setItem("catID", id);
-//     window.location = "products.html"
-// }
-
-function showProductsList(){
+function showProductsInfoList(){
 
     let informacion = "";
     for(let i = 0; i < currentProductsArray.length; i++){
@@ -65,7 +66,7 @@ function showProductsList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount))){
 
             informacion += `
-            <div class= "list-group-item list-group-item-action">
+            <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src= "` + product.image + `" alt="product image" class="img-thumbnail">
@@ -95,7 +96,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
     }
 
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
-    showProductsList();
+    showProductsInfoList();
 }
 
     document.getElementById("sortAsc").addEventListener("click", function(){
@@ -117,7 +118,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
         minCount = undefined;
         maxCount = undefined;
 
-        showProductsList();
+        showProductsInfoList();
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
@@ -138,7 +139,5 @@ function sortAndShowProducts(sortCriteria, productsArray){
             maxCount = undefined;
         }
 
-        showProductsList();
+        showProductsInfoList();
     });
-
-    document.getElementById("usuarioIngresado").innerHTML = `<a class="nav-link" href="my-profile.html">${obtenerInfo()}</a>`;

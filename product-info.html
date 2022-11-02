@@ -10,6 +10,12 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .checked {
+      color: orange;
+    }
+    </style>
 </head>
 
 <body>
@@ -22,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="inicio.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -30,21 +36,42 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="usuarioIngresado">
           </li>
+          <li class="nav-item" id="usuarioIngresado">
+            <input type="search">
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  <main class="todo">
+    <div class="container" id="producto">
+      <div class="container" id="product-info-container">
+      </div>
+      <h3 class="comentarios">Comentarios</h3>
+      <div class="list-group" id="comments">
       </div>
     </div>
+    <div class="container" id="comentarios">
+      <form action="">
+        <h3>Comentar</h3>
+      <hr>
+      <h6>Tú opinión</h6>
+      <hr>
+      <textarea name="" id="area" cols="50" rows="4"></textarea>
+      <hr>
+      <h6>Tu puntuación</h6>
+      <hr>
+      <input type="number" value="0" min="0" max="5">
+      <hr>
+      <input type="submit" value="Enviar" id="bot">
+      </form>
+      </div>
+      <H3 class="container">PRODUCTOS RELACIONADOS</H3>
+      <div id="producto-relacionado">
+      </div>
   </main>
-  <footer class="text-muted">
-    <div class="container">
+  <footer>
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
@@ -61,9 +88,12 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
 </body>
 
 </html>
+
+<P></P>

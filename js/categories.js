@@ -40,7 +40,7 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
-function showProductsList(){
+function showProductsInfoList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
@@ -81,7 +81,7 @@ function sortAndShowProducts(sortCriteria, categoriesArray){
     currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
    
     //Muestro las categorías ordenadas
-    showProductsList();
+    showProductsInfoList();
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductsArray = resultObj.data
-            showProductsList()
+            showProductsInfoList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         minCount = undefined;
         maxCount = undefined;
 
-        showProductsList();
+        showProductsInfoList();
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
@@ -138,8 +138,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             maxCount = undefined;
         }
 
-        showProductsList();
+        showProductsInfoList();
     });
 });
-
-document.getElementById("usuarioIngresado").innerHTML = `<a class="nav-link" href="my-profile.html">${obtenerInfo()}</a>`;

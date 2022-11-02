@@ -213,3 +213,51 @@ background-color: blue;
 border-color: blue;
 margin-top: 20px;
 }
+.row{
+  margin-top: 20px;
+  margin-left: 50px;
+  margin right: 50px;
+}
+
+
+.ima{
+position: relative;
+}
+
+#comentarios{
+  margin-bottom: 50px;
+}
+
+.todo{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#bot{
+  background-color: blue;
+  color: white;
+  border: blue;
+}
+
+#img{
+  max-width: 260px;
+}
+
+#producto-relacionado{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-secondary{
+  background-color: green;
+  border-color: black;
+  font-weight: bolder;
+}
+
+#sinBorde{
+  border: none;
+}
+
+#autito{
+  width: 90px;
+  height: 70px;
+}

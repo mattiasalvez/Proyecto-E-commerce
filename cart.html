@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="inicio.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -29,19 +29,182 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="usuarioIngresado">
           </li>
+          <li class="nav-item" id="usuarioIngresado">
+            <input type="search">
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="container" id="">
+      <h2 class = "text-center" p-2>Carrito de compras</h2>
+      <br>
+      <h4 class = "text-center">Articulos a Comprar</h4>
+      <hr>
+      
+      <table class="col-12">
+        <tr>
+          <td></td>
+          <td class = "text-center"><strong>Nombre</strong></td>
+          <td class = "text-center"><strong>Costo</strong></td>
+          <td class = "text-center"><strong>Cantidad</strong></td>
+          <td class = "text-center"><strong>Subtotal</strong></td>
+        </tr>
+
+        <div class="product-list-container">
+         <tr id="carro" class="">
+            <td id="autito" class="w-10"></td>
+            <td class="text-center mx-auto" id="nombre"></td>
+            <td class="text-center mx-auto" id="costo"></td>
+            <td class="text-center mx-auto" id="cantidad1"><input id="cantidad2" type="number" value="1" class="text-center  validation validacion1" oninput="calculo2(costo, this.value)" required>
+              <div class="invalid-feedback">
+                El minimo debe ser 1.
+              </div>
+            </td>
+            <td class="text-center mx-auto" id="subtotal"></td> 
+          </tr>
+        </div>
+     </table>
+      <hr>
     </div>
+
+      <div class="container">
+        <form action="">
+          <h3>Tipo de envío</h3>
+          <label for=""><input type="radio" name="envio" value="0.15" id="premium" class="form-check-input validation validacion1" oninput="calculo1(costo, this.value)" required> Premium de 2 a 5 días (15%)</label><br>
+          <label for=""><input type="radio" name="envio" value="0.07" id="express" class="form-check-input validation validacion1" oninput="calculo1(costo, this.value)" required> Express de 5 a 8 días (7%)</label><br>
+          <label for=""><input type="radio" name="envio" value="0.05" id="standard" class="form-check-input validation validacion1" oninput="calculo1(costo, this.value)" required> Standard de 12 a 15 días (5%)</label><br><br>
+
+          <h2>Dirección de envío</h2>
+
+          <p class="mt-2 mb-0">Calle</p>
+            <input type="text" id="direccion" required class="w-25 form-control validacion1">
+              <br>
+                <div class="invalid-feedback">
+                  Debe ingresar una calle.
+                </div>
+
+          <p class="mt-2 mb-0">Número</p>
+            <input type="number" id="numero" required class="w-25 form-control validacion1">
+              <br>
+                <div class="invalid-feedback">
+                 Debe ingresar un numero.
+                </div>
+
+          <p class="mt-2 mb-0">Esquina</p>
+            <input type="text" id="esquina" required class="w-25 form-control validacion1">
+              <div class="invalid-feedback">
+                Debe ingresar una esquina.
+              </div>
+                <hr>
+
+         </form>        
+        
+      </div>
+          <div class="container">
+            <h2>Costos</h2>
+              <form action="">
+                <div>
+                  <div class="col d-none d-lg-block round">
+                    <table class="w-100">
+                     <tbody>
+                        <tr>
+                          <td class="slide border border-1 p-2">Subtotal <br><p>Costo unitario del producto por cantidad</p>
+                            <p class="d-flex justify-content-end" id="subtotales"></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="slide border border-1 p-2">Costo de envio <br><p>Según el tipo de envio</p>
+                            <p id="envios" class="d-flex justify-content-end"></p>
+                          </td>
+                        </tr>
+                         <tr>
+                            <td class="slide border border-1 p-2">Total ($)<br><br>
+                              <strong><p id="totales" class="d-flex justify-content-end"></p></strong>
+                            </td>
+                          </tr>
+                      </tbody>
+                     </table>
+                    </div>
+                  </div>
+              </form>
+             </div>
+            <hr>
+
+    <div class="container">
+      <h2>Forma de pago</h2>
+        <div class="d-inline p-2">
+            <button type="button" class="btn btn-primary d-inline p-2 validation validacion1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="selectbot">Seleccionar</button>
+            <p id="nombres"></p>
+            <div class="invalid-feedback">
+              Debe seleccionar forma de pago.
+            </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Formas de pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+         <form action="" method="post">
+          <div>
+            <label for="">
+              <input type="radio" id="tarjeta" name="pago" value="" class="form-check-input validation validacion1" required> Tarjeta de credito
+            </label>
+              <hr>
+          </div>
+
+           <div>
+            <div class="col-4">
+              <label for="">Numero de tarjeta<input type="number" id="tarjetanumeracion" class="form-control validacion1" minlength="16" required></label>
+          </div>
+          </div>
+            <div class="col-4">
+              <label for="">Codigo de seg.<input type="number" id="tarjetacodigo" class="form-control validacion1" required></label>
+            </div>
+            <div class="col-4">
+             <label for="">Vencimiento (MM/AA)<input type="number" id="tarjetavencimiento" class="form-control validacion1" required></label>
+            </div>
+             <div>
+                <br>
+                  <label for="">
+                    <input type="radio" id="debito" name="pago" value="" class="form-check-input validacion1" required> Transferencia Bancaria
+                  </label>
+                  <hr>
+              </div>
+            <div class="col-4">
+              <label for="">Numero de cuenta
+                <input type="number" id="debitocampo"  class="form-control validacion1" required></label>
+            </div>
+              <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+          </form>
+      </div>
+   
+      </div>
+   </div>
+  </div>
+</div>
   </main>
+  <br>
+  <div class="container">
+    <button type="submit" class="btn btn-primary w-100 fw-bold" id="finalizar">Finalizar Compra</button>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertaFinal" hidden>
+    <strong>Su compra se realizó con éxito!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -64,5 +227,4 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-
 </html>
