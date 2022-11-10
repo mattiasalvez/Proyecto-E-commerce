@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
-console.log(productsArray)
 
 function setCatID(id) {
     localStorage.setItem("catID", id);
