@@ -9,7 +9,6 @@ document.getElementById("emailpr").value = mail;
     const save = document.getElementById("btnSave");
 
     function validationProfile(){
-        let array = [];
         for (const element of validacionesPr) {
             if (!element.checkValidity()) {
                 element.classList.add("is-invalid");
@@ -17,13 +16,26 @@ document.getElementById("emailpr").value = mail;
              } else {
                     element.classList.add("is-valid");
                     element.classList.remove("is-invalid");
-                    localStorage.setItem("nombre", nameProfile.value);
-                    sessionStorage.setItem("nombre", nameProfile.value);
-                    localStorage.setItem("apellido", surnameProfile.value);
-                    localStorage.setItem("mailing", mailProfile.value);
             }}
         }
+    
+        function complete(){
+            if (nameProfile.value){
+                localStorage.setItem("nombre", nameProfile.value);
+            } else false;
+            if (surnameProfile.value){
+                localStorage.setItem("apellido", surnameProfile.value);
+            } else false;
+            if (mailProfile.value){
+                localStorage.setItem("mailing", mailProfile.value);
+            } else false;
+        }
+
        save.addEventListener("click", function(e){
         validationProfile();
-       }) 
+        complete();
+       })
+
+       nameProfile.value = localStorage.getItem("nombre");
+       surnameProfile.value = localStorage.getItem("apellido");
    

@@ -46,8 +46,6 @@ function obtenerInfo(){
   return mail;
 }
 
-
-
 document.getElementById("usuarioIngresado").innerHTML = `<div class="dropdown">
 <a class="btn btn-secondary dropdown-toggle" href="index.html" role="button" id="usuarioIngresado" data-bs-toggle="dropdown" aria-expanded="false">${obtenerInfo()}</a>
 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
@@ -59,7 +57,7 @@ document.getElementById("usuarioIngresado").innerHTML = `<div class="dropdown">
 `;
 
   document.getElementById("cerrar").addEventListener("click", function() {
-      localStorage.removeItem("usuario");
+      localStorage.clear();
   });
 
 
