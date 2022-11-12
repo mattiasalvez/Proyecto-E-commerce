@@ -1,26 +1,5 @@
-const txtmail = document.getElementById("emailpr");
-console.log(txtmail);
-
-function inicio(){
-    let mail = localStorage.getItem("usuario");
-    console.log(mail);
-    document.getElementById("emailpr").innerHTML = mail;
-    console.log(mail);
-    
-}
-inicio();
-
-
-document.addEventListener("DOMContentLoaded", function(e){
-    inicio();
-    let mail = localStorage.getItem("usuario");
-    console.log(mail);
-    document.getElementById("emailpr").innerHTML.value = mail;
-    console.log(mail);
-  
-    });
-
-    inicio();
+let mail = obtenerInfo();
+document.getElementById("emailpr").value = mail;
 
     //Validaciones
     const validacionesPr = document.getElementsByClassName("valiProfile");
@@ -30,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     const save = document.getElementById("btnSave");
 
     function validationProfile(){
+        let array = [];
         for (const element of validacionesPr) {
             if (!element.checkValidity()) {
                 element.classList.add("is-invalid");
@@ -37,10 +17,12 @@ document.addEventListener("DOMContentLoaded", function(e){
              } else {
                     element.classList.add("is-valid");
                     element.classList.remove("is-invalid");
-            } 
-        }}
-
-    
+                    localStorage.setItem("nombre", nameProfile.value);
+                    sessionStorage.setItem("nombre", nameProfile.value);
+                    localStorage.setItem("apellido", surnameProfile.value);
+                    localStorage.setItem("mailing", mailProfile.value);
+            }}
+        }
        save.addEventListener("click", function(e){
         validationProfile();
        }) 

@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 getJSONData(listaComentarios).then(function(resultObj){
         if (resultObj.status === "ok"){
              comentarios = resultObj.data
-            //console.log(comentarios)
             showCommentsList()
         }
     });
@@ -58,14 +57,12 @@ function showProductsInfoList(product){
 
     function setProdInfoID(id) {
         localStorage.setItem("catID", id);
-        //console.log(id);
         window.location = "product-info.html"
     }
     
 
 function showOtherProducts(product){
     let others = product.relatedProducts;
-    //console.log(others[1].image);
     
     let htmlContentToAppend = ""
     for (let i = 0; i < others.length; i++) {
